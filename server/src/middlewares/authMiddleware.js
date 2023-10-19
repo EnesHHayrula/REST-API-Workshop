@@ -5,11 +5,14 @@ exports.auth = (req, res, next) => {
 
   if (token) {
     try {
-      const decodedToken = jwt.verify(token, SOME_SECRET);
+      const decodedToken = jwt.verify(token, "SOME_SECRET");
       req.user = decodedToken;
+
       next();
     } catch (error) {
       res.status(401).json({ message: "You are not authorized!" });
     }
+  } else {
+    next();
   }
 };
