@@ -1,5 +1,6 @@
 const router = require("express").Router();
 const furnitureService = require("../services/furnitureService");
+
 router.get("/", async (req, res) => {
   try {
     const furnitures = await furnitureService.getAll();
@@ -9,6 +10,7 @@ router.get("/", async (req, res) => {
   }
 });
 
+// POST => Create
 router.post("/", async (req, res) => {
   try {
     const { description, img, make, material, model, price, year } = req.body;
@@ -29,10 +31,6 @@ router.post("/", async (req, res) => {
 });
 
 // GET => Read
-// DELETE => Delete
-// POST => Create
-// PUT, Patch => Update
-
 router.get("/:furnitureId", async (req, res) => {
   try {
     const { furnitureId } = req.params;
@@ -43,6 +41,7 @@ router.get("/:furnitureId", async (req, res) => {
   }
 });
 
+// PUT, Patch => Update
 router.put("/:furnitureId", async (req, res) => {
   try {
     const { furnitureId } = req.params;
@@ -64,6 +63,7 @@ router.put("/:furnitureId", async (req, res) => {
   }
 });
 
+// DELETE => Delete
 router.delete("/:furnitureId", async (req, res) => {
   try {
     const { furnitureId } = req.params;
