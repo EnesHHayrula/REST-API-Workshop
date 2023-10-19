@@ -6,9 +6,10 @@ exports.getAll = async (qs) => {
   if (qs.where) {
     let [_, ownerId] = qs.where.split("=");
     ownerId = ownerId.replaceAll('"', "");
-    query = query.find({ _ownerId: ownerId });
-    // query = query.where("_ownerId").eq(ownerId);
+    // query = query.find({ _ownerId: ownerId });
+    query = query.where("_ownerId").eq(ownerId);
   }
+
   const result = await query;
   return result;
 };
