@@ -64,5 +64,14 @@ router.put("/:furnitureId", async (req, res) => {
   }
 });
 
+router.delete("/:furnitureId", async (req, res) => {
+  try {
+    const { furnitureId } = req.params;
+    await furnitureService.delete(furnitureId);
+    res.status(204).end();
+  } catch ({ message }) {
+    res.status(400).json({ message });
+  }
+});
 
 module.exports = router;
