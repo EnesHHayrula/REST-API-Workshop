@@ -22,6 +22,7 @@ router.post("/login", async (req, res) => {
   }
 });
 
-// ToDO: Implement Logout
-
+router.get("/logout", (req,res)=>{
+    res.end(); //TODO
+})
 module.exports = router;

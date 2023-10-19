@@ -3,6 +3,7 @@ const cors = require("cors");
 const mongoose = require("mongoose");
 
 const routes = require("./routes");
+const { auth } = require("./middlewares/authMiddleware");
 
 const app = express();
 const PORT = 3030;
@@ -11,6 +12,7 @@ const PORT = 3030;
 app.use(express.urlencoded({ extended: false }));
 app.use(express.json()); // application json
 app.use(cors());
+app.use(auth);
 
 //DB Config
 mongoose
@@ -22,7 +24,6 @@ mongoose
 //   res.setHeader("Access-Control-Allow-Origin", "*");
 //   res.setHeader("Access-Control-Allow-Methods", "*");
 //   res.setHeader("Access-Control-Allow-Headers", "*");
-
 //   next();
 // });
 
